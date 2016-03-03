@@ -1,0 +1,1 @@
+echo "source $HOME/dotfiles/index" > "$HOME/.zshrc"

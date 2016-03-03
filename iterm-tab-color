@@ -1,0 +1,48 @@
+# source https://github.com/wadey/dotfiles/blob/master/zsh/iterm2.zsh
+# iTerm2 tab color commands
+# http://code.google.com/p/iterm2/wiki/ProprietaryEscapeCodes
+
+declare -A SSH_COLORS
+SSH_COLORS[production]=FF3838 #red
+SSH_COLORS[staging]=FFFF38 # yellow
+SSH_COLORS[dev]=A0FFA0 # green
+
+if [[ -n "$ITERM_SESSION_ID" ]]; then
+    tab-color() {
+        if [[ $# -ne 3 ]]; then
+            hex="$1"
+            red=$(printf "%d" 0x${hex:0:2})
+            green=$(printf "%d" 0x${hex:2:2})
+            blue=$(printf "%d" 0x${hex:4:2})
+        else
+            red=$1
+            green=$2
+            blue=$3
+        fi
+        echo -ne "\033]6;1;bg;red;brightness;$red\a"
+        echo -ne "\033]6;1;bg;green;brightness;$green\a"
+        echo -ne "\033]6;1;bg;blue;brightness;$blue\a"
+    }
+    tab-red() { tab-color 255 0 0 }
+    tab-green() { tab-color 0 255 0 }
+    tab-blue() { tab-color 0 0 255 }
+    tab-reset() { echo -ne "\033]6;1;bg;*;default\a" }
+
+    function iterm2_tab_precmd() {
+        tab-reset
+    }
+
+    function iterm2_tab_preexec() {
+        if [[ "$1" =~ "^ssh " ]]; then
+            for key in "${(@k)SSH_COLORS[@]}"; do
+                if [[ "$1" =~ "$key" ]]; then
+                    tab-color "$SSH_COLORS[$key]"
+                fi
+            done
+        fi
+    }
+
+    autoload -U add-zsh-hook
+    add-zsh-hook precmd  iterm2_tab_precmd
+    add-zsh-hook preexec iterm2_tab_preexec
+fi
