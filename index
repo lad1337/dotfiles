@@ -13,7 +13,7 @@ alias ze="vim ~/.zshrc"
 # python virtual env stuff
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 VIRTUALENVWRAPPER_PATH="/usr/local/bin/virtualenvwrapper.sh"
-if [ -b "$VIRTUALENVWRAPPER_PATH" ]
+if [ -f "$VIRTUALENVWRAPPER_PATH" ]
 then
   source "$VIRTUALENVWRAPPER_PATH"
 fi
@@ -32,6 +32,11 @@ SSH_COLORS[dev]=A0FFA0 # green
 
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# docker-machine helper
+function workwith(){
+	eval $(docker-machine env "$1")	
+}
 
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
+

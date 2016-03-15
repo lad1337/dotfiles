@@ -189,10 +189,18 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
+prompt_docker_machine_env() {
+  local docker_machine_name="$DOCKER_MACHINE_NAME"
+  if [[ -n $docker_machine_name ]]; then
+    prompt_segment blue white "$docker_machine_name"
+  fi
+}
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?
   prompt_status
+  prompt_docker_machine_env
   prompt_virtualenv
   #prompt_context
   prompt_dir
