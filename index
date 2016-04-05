@@ -37,6 +37,22 @@ function workwith(){
 	eval $(docker-machine env "$1")	
 }
 
+function cast-off(){
+	eval $(docker-machine env -u)
+}
+
+# http://cdn.smosh.com/sites/default/files/bloguploads/simpsons-fire.gif
+kiwf(){
+	find . -name $1 -delete -exec sh -c 'echo {} 🔥' \;
+}
+
+# http://superuser.com/questions/180299/how-can-i-trigger-the-screensaver-on-my-mac
+alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
+
+# sublime hack stuff
+alias hack="subl ."
+
 
