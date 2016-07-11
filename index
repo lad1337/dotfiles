@@ -20,39 +20,75 @@ fi
 export VIRTUAL_ENV=''
 
 # we speak english
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+export LC_ALL=en_GB.UTF-8
+export LANG=en_GB.UTF-8
 
 # iterm2 tab color functions
 source "$DOT/iterm-tab-color"
 # custom colors
+# http://www.w3schools.com/colors/colors_picker.asp
 SSH_COLORS[production]=FF3838 #red
 SSH_COLORS[staging]=FFFF38 # yellow
+SSH_COLORS[integration]=0099FF # green
 SSH_COLORS[dev]=A0FFA0 # green
+SSH_COLORS[test]=9B30FF # blue
+SSH_COLORS[prod-new]=ff6600 # orange
 
+# see https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# docker-machine helper
-function workwith(){
-	eval $(docker-machine env "$1")	
-}
-
-function cast-off(){
-	eval $(docker-machine env -u)
-}
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
 
 # http://cdn.smosh.com/sites/default/files/bloguploads/simpsons-fire.gif
 kiwf(){
 	find . -name $1 -delete -exec sh -c 'echo {} 🔥' \;
 }
 
+get_pod_by_name_index(){
+	local INDEX=${2:-0}
+	echo $(kubectl get pods -l component=$1 -o jsonpath="{.items[$INDEX].metadata.name}")
+}
+
+kubedive(){
+	local INDEX=${2:-0}
+	kubectl exec -it $(get_pod_by_name_index $1 $INDEX) sh
+}
+
+kubelogs(){
+	local INDEX=${2:-0}
+	kubectl logs $(get_pod_by_name_index $1 $INDEX) -f
+}
+
+# see http://stackoverflow.com/a/3572105
+realpath(){
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+
 # http://superuser.com/questions/180299/how-can-i-trigger-the-screensaver-on-my-mac
 alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
-# LOAD THE ZSH
-source $ZSH/oh-my-zsh.sh
+# clean tox
+alias detox="find . -name '*.pyc' -delete && rm -r .tox"
 
 # sublime hack stuff
 alias hack="subl ."
+
+#open ports on osx
+alias lsnet='lsof -nP -i4TCP -sTCP:LISTEN'
+
+# Delete all volumes
+alias docker-clean-volumes='printf "\n>>> Deleting dangling volumes\n\n" && docker volume rm $(docker volume ls -qf dangling=true)'
+
+# Delete all stopped containers.
+alias docker-clean-containers='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+
+# Delete all untagged images.
+alias docker-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+
+# clean all docker things
+alias docker-clean-all='docker-clean-containers || true && docker-clean-images || true && docker-clean-volumes'
+
+# LOAD THE ZSH
+source $ZSH/oh-my-zsh.sh
 
 
