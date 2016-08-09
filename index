@@ -4,7 +4,7 @@ ZSH_CUSTOM="$HOME/dotfiles/custom"
 
 export DOT="$HOME/dotfiles"
 
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 # brew install zsh-completions
 # and load
@@ -40,8 +40,6 @@ SSH_COLORS[dev]=A0FFA0 # green
 SSH_COLORS[test]=9B30FF # blue
 SSH_COLORS[prod-new]=ff6600 # orange
 
-# see https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source "$DOT/git-flower"
 # customize with
