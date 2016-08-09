@@ -43,6 +43,11 @@ SSH_COLORS[prod-new]=ff6600 # orange
 # see https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+source "$DOT/git-flower"
+# customize with
+# url is without the key/id
+# export HOTFIX_ISSUE_URL="https://github.com/lad1337/dotfiles/issues/"
+
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
 
 # http://cdn.smosh.com/sites/default/files/bloguploads/simpsons-fire.gif
