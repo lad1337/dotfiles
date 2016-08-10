@@ -97,6 +97,9 @@ alias docker-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker
 # clean all docker things
 alias docker-clean-all='docker-clean-containers || true && docker-clean-images || true && docker-clean-volumes'
 
+# fancy cat
+alias kitty='pygmentize -f terminal16m -O "style=fruity"'
+
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
 
