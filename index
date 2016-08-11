@@ -1,6 +1,9 @@
+# vim: syntax=sh
+
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster-py"
 ZSH_CUSTOM="$HOME/dotfiles/custom"
+DISABLE_UPDATE_PROMPT=true
 
 export DOT="$HOME/dotfiles"
 
