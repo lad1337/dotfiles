@@ -43,13 +43,13 @@ SSH_COLORS[dev]=A0FFA0 # green
 SSH_COLORS[test]=9B30FF # blue
 SSH_COLORS[prod-new]=ff6600 # orange
 
-
-source "$DOT/git-flower"
-# customize with
+# load all other 'extensions'
+source "$DOT/colorman.zsh"
+source "$DOT/git-flower.zsh"
+# git-flower, config:
 # url is without the key/id
 # export HOTFIX_ISSUE_URL="https://github.com/lad1337/dotfiles/issues/"
-
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin"
 
 # http://cdn.smosh.com/sites/default/files/bloguploads/simpsons-fire.gif
 kiwf(){
@@ -61,10 +61,11 @@ get_pod_by_name_index(){
 	echo $(kubectl get pods -l component=$1 -o jsonpath="{.items[$INDEX].metadata.name}")
 }
 
-kubedive(){
-	local INDEX=${2:-0}
-	kubectl exec -it $(get_pod_by_name_index $1 $INDEX) sh
-}
+# kubedive(){
+#	local INDEX=${2:-0}
+#    local CONTAINER_ID=${3:-""}
+#	kubectl exec -it $(get_pod_by_name_index $1 $INDEX) --container="$CONTAINER_ID" sh
+#}
 
 kubelogs(){
 	local INDEX=${2:-0}
@@ -100,8 +101,14 @@ alias docker-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker
 # clean all docker things
 alias docker-clean-all='docker-clean-containers || true && docker-clean-images || true && docker-clean-volumes'
 
-# fancy cat
-alias kitty='pygmentize -f terminal16m -O "style=fruity"'
+# just like cat 
+alias dog='pygmentize -f terminal16m -O "style=fruity"'
+
+# git semantic version last 5
+alias are-we-there-yet="git tag | grep '^[0-9\.]*$' | gsort -V | tail -n 5"
+
+# build a python wheel, you know because its long to type
+alias bw="python setup.py bdist_wheel"
 
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh

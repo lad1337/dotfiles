@@ -17,7 +17,7 @@ hotfix-done(){
 	git fetch --tags --prune --progress
 	git checkout master
 	git pull --progress
-	git merge --quiet --no-edit "$hotfix_branch" || return 1
+	git merge --quiet --no-edit --no-ff "$hotfix_branch" || return 1
 	echo "################################"
 	echo "Last five tags:"
 	git tag | grep '^[0-9\.]*$' | gsort -V | tail -n 5
