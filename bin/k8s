@@ -1,0 +1,89 @@
+#!/usr/bin/env python
+from collections import OrderedDict
+import json
+import subprocess
+from functools import wraps
+
+import click
+import humanfriendly
+from sh import kubectl
+from tabulate import tabulate
+
+
+def dictyfy(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        value = func(*args, **kwargs)
+        return json.loads(str(value))
+    return wrapper
+
+
+@dictyfy
+def get_pods(namespace="default"):
+    return kubectl('--namespace', namespace, 'get', 'pods', '-o', 'json')
+
+
+@dictyfy
+def get_namespaces():
+    return kubectl('get', 'ns', '-o', 'json')
+
+
+@click.group()
+@click.pass_context
+def cli(ctx):
+    """Simple program that greets NAME for a total of COUNT times."""
+    pass
+
+
+@click.argument('pod', default=None, nargs=-1)
+@click.option('--command', '-c', default='sh', help='command to exec')
+@cli.command()
+def dive(pod, command):
+    pods = get_pods()
+    if not pod:
+        pod_names = [n['metadata']['name'] for n in pods['items']]
+        pod = humanfriendly.prompt_for_choice(pod_names, padding=False)
+
+    container = ""
+    for pod_ in pods['items']:
+        if pod_['metadata']['name'] == pod:
+            if len(pod_['spec']['containers']) > 1:
+                container_names = [c['name'] for c in pod_['spec']['containers']]
+                container = humanfriendly.prompt_for_choice(container_names, padding=False)
+    subprocess.check_call([kubectl._path, 'exec', '-it', '--container', container, pod, command])
+
+
+@click.argument('pod')
+@cli.command()
+def logs(pod):
+    subprocess.check_call([kubectl._path, 'logs', pod, '-f'])
+
+
+@click.option('--all', '-a', is_flag=True, help="all namespaces")
+@click.option('--namespace', '-n', default="default", help="namespace")
+@cli.command()
+def ls(all, namespace):
+    namespaces = [namespace]
+    if all:
+        namespaces = [ns['metadata']['name'] for ns in get_namespaces()['items']]
+
+    pods = []
+    for namespace in namespaces:
+        pods.extend(get_pods(namespace)['items'])
+
+    table = []
+    for item in pods:
+        od = OrderedDict([
+            ('Name', item['metadata']['name']),
+            ('Namespace', item['metadata']['namespace']),
+            ('Containers', ", ".join(
+                [container['name'] for container in item['spec']['containers']])),
+            ('Status', item['status']['phase']),
+        ])
+        table.append(od)
+
+    click.echo(tabulate(table, headers="keys"))
+
+
+if __name__ == '__main__':
+    cli()
