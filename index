@@ -113,4 +113,15 @@ alias bw="python setup.py bdist_wheel"
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
 
+export LOLMODE=false
+
+my-accept-line () {
+  if [[ "$LOLMODE" == true ]]; then
+    BUFFER="${BUFFER} | lolcat"
+  fi
+  zle .accept-line
+}
+zle -N accept-line my-accept-line
+alias LOL="LOLMODE=true"
+alias NOLOL="LOLMODE=false"
 
