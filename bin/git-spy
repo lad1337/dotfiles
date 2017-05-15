@@ -1,0 +1,7 @@
+# $ git spy
+# print last change date of each remote branch and who worked on it, sorted by last change date
+for branch in `git branch -r | grep -v HEAD`;do
+    www=`git show --format="%ai %ar by %Cblue%an%Creset" $branch | head -n 1`
+    echo "$www $branch";
+done | sort -r
+
