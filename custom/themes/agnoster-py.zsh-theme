@@ -164,12 +164,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  #echo -n '%(?|%K{blue}|%K{red})%~%k'
-  if [[ $RETVAL -ne 0 ]]; then
-    prompt_segment red black '%2~'
-  else
-    prompt_segment blue black '%2~'
-  fi
+  prompt_segment blue black '%~'
 }
 
 # Virtualenv: current working virtualenv
@@ -204,7 +199,7 @@ prompt_docker_machine_env() {
 ## Main prompt
 build_prompt() {
   RETVAL=$?
-  #prompt_status
+  prompt_status
   prompt_docker_machine_env
   prompt_virtualenv
   prompt_context
