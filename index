@@ -1,7 +1,7 @@
 # vim: syntax=sh
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="agnoster-py"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 ZSH_CUSTOM="$HOME/dotfiles/custom"
 DISABLE_UPDATE_PROMPT=true
 
@@ -10,6 +10,11 @@ export DOT="$HOME/dotfiles"
 plugins=(git zsh-syntax-highlighting)
 
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:"
+# https://github.com/bhilburn/powerlevel9k
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtualenv)
+POWERLEVEL9K_VIRTUALENV_BACKGROUND="green"
+
 # brew install zsh-completions
 # and load
 # might need: rm -f ~/.zcompdump; compinit
@@ -122,3 +127,8 @@ alias LOL="LOLMODE=true"
 alias NOLOL="LOLMODE=false"
 alias repl="ipython"
 alias last-stash="git stash show 'stash@{0}' -p"
+local grc="/usr/local/bin/grc -es --colour=auto"
+alias ping="${grc} ping"
+alias dig="${grc} dig"
+alias ifconfig="${grc} ifconfig"
+alias traceroute="${grc} ifconfig"
