@@ -73,6 +73,10 @@ tunnel-anything(){
     ssh -S /tmp/tunnel-anything-1337 -O exit "$2"
 }
 
+t(){
+    tree -L "$1"
+}
+
 # see http://stackoverflow.com/a/3572105
 realpath(){
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
@@ -131,4 +135,8 @@ local grc="/usr/local/bin/grc -es --colour=auto"
 alias ping="${grc} ping"
 alias dig="${grc} dig"
 alias ifconfig="${grc} ifconfig"
-alias traceroute="${grc} ifconfig"
+alias traceroute="${grc} traceroute"
+alias t2="t 2"
+alias t3="t 3"
+alias t4="t 4"
+alias t5="t 5"
