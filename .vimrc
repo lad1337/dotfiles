@@ -54,6 +54,7 @@ map <leader>{ ysiw{
 vmap <leader>} c{ <C-R>" }<ESC>
 vmap <leader>{ c{<C-R>"}<ESC>
 
+vnoremap <leader>gy "*y
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 set ts=4 sts=4 sw=4 expandtab
@@ -72,7 +73,26 @@ Plug 'python-mode/python-mode', { 'for': 'python' }
 Plug 'vim-airline/vim-airline'
 Plug 'blueshirts/darcula'
 Plug 'kh3phr3n/python-syntax'
+Plug 'vim-scripts/openssl.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
+
+" fuzzy
+let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_buffers_jump = 1
+
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>b :Buffers<cr>
+nnoremap <silent> <leader>gf :GitFiles?<cr>
+nnoremap <silent> <leader>ag :Ag<cr>
+nnoremap <silent> <leader>h: :History:<cr>
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
 
 colorscheme darcula
 
@@ -80,4 +100,8 @@ colorscheme darcula
 vmap <C-i> !eingefuhrt<CR>
 let g:pymode_options_max_line_length = 100
 let g:python_highlight_all = 1
+let g:pymode_breakpoint_bind = '<leader><leader>b'
 
+
+" yaml
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2

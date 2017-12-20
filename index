@@ -55,7 +55,7 @@ source "$DOT/git-flower.zsh"
 # git-flower, config:
 # url is without the key/id
 # export HOTFIX_ISSUE_URL="https://github.com/lad1337/dotfiles/issues/"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin"
 
 # http://cdn.smosh.com/sites/default/files/bloguploads/simpsons-fire.gif
 kiwf(){
@@ -75,6 +75,10 @@ tunnel-anything(){
 
 t(){
     tree -L "$1"
+}
+
+ssl-fingerprint(){
+    openssl s_client -servername "$1" -connect "$1:443" | openssl x509 -fingerprint -noout
 }
 
 # see http://stackoverflow.com/a/3572105
@@ -110,7 +114,7 @@ alias docker-clean-all='docker-clean-containers || true && docker-clean-images |
 alias dog='pygmentize -f terminal16m -O "style=fruity"'
 
 # git semantic version last 5
-alias are-we-there-yet="git tag | grep '^[0-9\.]*$' | gsort -V | tail -n 5"
+alias are-we-there-yet="git tag -l -n1 | gsort -V"
 
 # build a python wheel, you know because its long to type
 alias bw="python setup.py bdist_wheel"
