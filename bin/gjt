@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+import os
+from urlparse import urljoin
+import subprocess
+
+import click
+import requests
+
+def get_branch_type():
+    current_branch = subprocess.check_output(['git', 'symbolic-ref', '--short', 'HEAD'])
+    return {
+        'master': 'hotfix',
+        'develop': 'feature',
+    }.get(current_branch.strip(), 'feature')
+
+@click.group()
+@click.option('--debug/--no-debug', default=False)
+@click.pass_context
+def cli(ctx, debug):
+    ctx.obj['DEBUG'] = debug
+    ctx.obj['username'] = os.getenv('JIRA_USERNAME')
+    ctx.obj['pw'] = os.getenv('JIRA_PW')
+    ctx.obj['host'] = os.getenv('JIRA_HOST')
+
+
+@cli.command()
+@click.argument('ticket-id')
+@click.option('-t', type=click.Choice(['feature', 'hotfix', 'bug']), help="Select branch type")
+@click.pass_context
+def create(ctx, ticket_id, t):
+    type_ = t
+    ticket = get_ticket_data(ctx, ticket_id)
+    summary = ticket['fields']['summary']
+    slug = ''.join(c for c in summary.replace(' ', '-') if c.isalnum() or c  in '-_')
+    if type_ is None:
+        type_ = get_branch_type()
+    branch = '{}/{}-{}'.format(type_, ticket_id, slug.lower())
+    click.echo("Creating branch: {}".format(branch))
+    click.confirm('Do you want to continue?', abort=True)
+    subprocess.check_call(['git', 'checkout', '-b', branch])
+
+
+def get_ticket_data(ctx, ticket):
+    url = urljoin(ctx.obj['host'], 'rest/api/latest/issue/{}'.format(ticket))
+    resp = requests.get(url, auth=(ctx.obj['username'], ctx.obj['pw']), headers={'Content-Type': 'application/json'})
+    return resp.json()
+
+if __name__ == '__main__':
+    cli(obj={})
