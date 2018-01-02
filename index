@@ -122,6 +122,10 @@ alias bw="python setup.py bdist_wheel"
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
 
+# load fuzzy finder
+# currently installed by vim plugin manager
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export LOLMODE=false
 
 my-accept-line () {
