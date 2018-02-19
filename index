@@ -1,4 +1,4 @@
-# vim: syntax=sh
+# vim: ft=sh
 
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -13,7 +13,6 @@ export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg
 # https://github.com/bhilburn/powerlevel9k
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtualenv)
-POWERLEVEL9K_VIRTUALENV_BACKGROUND="green"
 
 # brew install zsh-completions
 # and load
@@ -55,7 +54,7 @@ source "$DOT/git-flower.zsh"
 # git-flower, config:
 # url is without the key/id
 # export HOTFIX_ISSUE_URL="https://github.com/lad1337/dotfiles/issues/"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin"
 
 # http://cdn.smosh.com/sites/default/files/bloguploads/simpsons-fire.gif
 kiwf(){
@@ -128,15 +127,6 @@ source $ZSH/oh-my-zsh.sh
 
 export LOLMODE=false
 
-my-accept-line () {
-  if [[ "$LOLMODE" == true ]]; then
-    BUFFER="${BUFFER} | lolcat"
-  fi
-  zle .accept-line
-}
-zle -N accept-line my-accept-line
-alias LOL="LOLMODE=true"
-alias NOLOL="LOLMODE=false"
 alias repl="ipython"
 alias last-stash="git stash show 'stash@{0}' -p"
 local grc="/usr/local/bin/grc -es --colour=auto"

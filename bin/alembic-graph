@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+import sys
+from graphviz import Digraph
+
+dot = Digraph(comment='alembic')
+
+
+def split_line(line):
+    bases, _, name_and_target = line.partition('->')
+    id_and_stuff, _, desc = name_and_target.strip().partition(',')
+    desc = desc.strip()
+
+    id_, _, type_ = id_and_stuff.partition(' ')
+    id_ = id_.replace('<', '').replace('>', '')
+    type_ = type_[1:-1]
+
+    lowers = []
+    dependencies = []
+    for base in bases.split(' '):
+        base = base.strip().replace(',', '')
+        if not base:
+            continue
+        if base.startswith('(') and base.endswith(')'):
+            dependencies.append(base.replace('(', '').replace(')', ''))
+        else:
+            lowers.append(base)
+
+    return id_, lowers, dependencies, desc, type_
+
+
+for line in sys.stdin.readlines():
+    id_, lowers, dependencies, desc, type_ = split_line(line)
+    if not id_:
+        continue
+    dot.node(id_, id_ + ":\n" + desc)
+    for lower in lowers:
+        dot.edge(lower, id_)
+    for dep in dependencies:
+        dot.edge(id_, dep, label='depends on', _attributes=dict(style='dotted'))
+
+dot.render('/tmp/alembic.gv', view=True)

@@ -32,8 +32,6 @@
 	<true/>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
-	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dotfiles</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -53,7 +51,7 @@
 	gAKACoAN0xAJChEVGVdOUy5rZXlzoxITFIADgASABaMWFxiABoAHgAiACVpJZGVudGlm
 	aWVyVVdpZHRoVkhpZGRlblEwI0BowAAAAAAACNIhIiMkWiRjbGFzc25hbWVYJGNsYXNz
 	ZXNcTlNEaWN0aW9uYXJ5oiMlWE5TT2JqZWN00xAJCicrGaMSExSAA4AEgAWjLC0YgAuA
-	DIAIgAlRMSNAdKAAAAAAANIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
+	DIAIgAlRMSNAdKGdsi0OVtIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
 	TlNLZXllZEFyY2hpdmVy0Tg5VUFycmF5gAEACAARABoAIwAtADIANwBGAEwAUQBcAGMA
 	ZgBoAGoAbABzAHsAfwCBAIMAhQCJAIsAjQCPAJEAnACiAKkAqwC0ALUAugDFAM4A2wDe
 	AOcA7gDyAPQA9gD4APwA/gEAAQIBBAEGAQ8BFAEjAScBLwFBAUQBSgAAAAAAAAIBAAAA
@@ -74,26 +72,10 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>1072 1051 572 222 -568 900 2560 1080 </string>
-	<key>NSWindow Frame Preferences</key>
-	<string>186 417 606 456 0 0 1440 877 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>402 1416 620 392 -568 900 2560 1080 </string>
-	<key>NSWindow Frame SessionsPreferences</key>
-	<string>-299 1039 606 456 -568 900 2560 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-300 1226 796 473 -568 900 2560 1080 </string>
-	<key>NSWindow Frame UKCrashReporter</key>
-	<string>-568 1374 592 584 -568 900 2560 1058 </string>
+	<string>358 329 796 473 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 989 490 375 -568 900 2560 1058 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
-	<string>712 909 1276 1049 -568 900 2560 1058 </string>
-	<key>NSWindow Frame iTerm Window 2</key>
-	<string>70 1104 1060 360 -568 900 2560 1057 </string>
-	<key>NSWindow Frame iTerm Window 3</key>
-	<string>-204 989 570 373 -568 900 2560 1057 </string>
+	<string>-479 1093 490 350 -634 900 2560 1057 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -666,7 +648,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>FiraCodeNerdFontCM-Regular 10</string>
+			<string>FiraCode-Regular 10</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -731,26 +713,16 @@
 			<string>/Users/dlutter</string>
 		</dict>
 	</array>
-	<key>NoSyncConfirmBeta</key>
+	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
-	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
-	<true/>
-	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
-	<integer>0</integer>
 	<key>NoSyncInstallationId</key>
-	<string>AD512D90-B758-4570-8592-A2B4F2E5D6BF</string>
+	<string>E1CA480B-966B-4FA7-9E6C-2FFF9737CEF8</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
-	<key>NoSyncPermissionToShowTip</key>
-	<false/>
-	<key>NoSyncSuppressBroadcastInputWarning</key>
-	<true/>
-	<key>NoSyncSuppressBroadcastInputWarning_selection</key>
-	<integer>0</integer>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>476012993.89203799</real>
+	<real>536858389.20010698</real>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
 	<key>PasteTabToStringTabStopSize</key>
@@ -797,11 +769,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=32</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=5</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-01-05T15:26:45Z</date>
+	<date>2018-01-26T14:00:35Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -815,8 +787,6 @@
 		<string>Notes</string>
 		<string>Jobs</string>
 	</array>
-	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1514541952</real>
 	<key>UseBorder</key>
 	<false/>
 	<key>WordCharacters</key>
@@ -833,7 +803,5 @@
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
 	<false/>
-	<key>moveToApplicationsFolderAlertSuppress</key>
-	<true/>
 </dict>
 </plist>
