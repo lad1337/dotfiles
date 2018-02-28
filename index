@@ -67,9 +67,18 @@ get_pod_by_name_index(){
 }
 
 tunnel-anything(){
-    ssh -M -S /tmp/tunnel-anything-1337 -fnNT -L "1337:localhost:$1" "$2"
-    vared -p "Tunnel is to '$2' open, on 1337->$1 (enter to stop)" -c tmp
-    ssh -S /tmp/tunnel-anything-1337 -O exit "$2"
+    if [[ $# < 2 || $# > 3 ]]
+    then
+        echo "Usage: tun <host> <hostport> [<port>]"
+        return 1
+    fi
+    local host="$1"
+    local hostport="$2"
+    local port=${3:-$hostport}
+
+    ssh -M -S "/tmp/tunnel-anything-$port" -fnNT -L ${port}:localhost:${hostport} "$host"
+    vared -p "Tunnel is to '$host' open, on $port->$hostport (enter to stop)" -c tmp
+    ssh -S "/tmp/tunnel-anything-$port" -O exit "$host"
 }
 
 t(){
@@ -120,6 +129,7 @@ alias bw="python setup.py bdist_wheel"
 
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
+compdef _ssh_hosts tunnel-anything
 
 # load fuzzy finder
 # currently installed by vim plugin manager
