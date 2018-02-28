@@ -40,6 +40,24 @@ def create(ctx, ticket_id, t):
     subprocess.check_call(['git', 'checkout', '-b', branch])
 
 
+@cli.command()
+@click.argument('ticket-id')
+@click.pass_context
+def emails(ctx, ticket_id):
+    ticket = get_ticket_data(ctx, ticket_id)
+    raw_emails = [word for word in ticket['fields']['description'].split() if '@' in word]
+    emails = []
+    if 'delete' in ticket['fields']['description']:
+        click.echo("DELETE this:", err=True)
+    if 'unlock' in ticket['fields']['description']:
+        click.echo("UNLOCK this:", err=True)
+    for raw in raw_emails:
+        if '|' in raw:
+            raw = raw[1:raw.find('|')].strip('*')
+        emails.append(raw)
+        click.echo(raw)
+
+
 def get_ticket_data(ctx, ticket):
     url = urljoin(ctx.obj['host'], 'rest/api/latest/issue/{}'.format(ticket))
     resp = requests.get(url, auth=(ctx.obj['username'], ctx.obj['pw']), headers={'Content-Type': 'application/json'})
