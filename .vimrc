@@ -15,6 +15,8 @@ set nofoldenable        "dont fold by default
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
+set noswapfile
+
 syntax on
 
 let mapleader=","
@@ -68,8 +70,6 @@ set completeopt=menuone
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
-Plug 'moll/vim-node', { 'for': 'node' }
-Plug 'python-mode/python-mode', { 'for': 'python' }
 Plug 'vim-airline/vim-airline'
 Plug 'blueshirts/darcula'
 Plug 'kh3phr3n/python-syntax'
