@@ -76,6 +76,7 @@ Plug 'kh3phr3n/python-syntax'
 Plug 'vim-scripts/openssl.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'elzr/vim-json'
 call plug#end()
 
 " fuzzy
