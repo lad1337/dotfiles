@@ -7,7 +7,7 @@ DISABLE_UPDATE_PROMPT=true
 
 export DOT="$HOME/dotfiles"
 
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting kubectl)
 
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:"
 # https://github.com/bhilburn/powerlevel9k
@@ -34,7 +34,7 @@ fi
 export VIRTUAL_ENV=''
 
 # we speak english
-export LC_ALL=en_GB.UTF-8
+#export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 
 # iterm2 tab color functions
@@ -55,6 +55,7 @@ source "$DOT/git-flower.zsh"
 # url is without the key/id
 # export HOTFIX_ISSUE_URL="https://github.com/lad1337/dotfiles/issues/"
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin"
+commands[kubectl]="something"
 
 # http://cdn.smosh.com/sites/default/files/bloguploads/simpsons-fire.gif
 kiwf(){
@@ -126,6 +127,12 @@ alias are-we-there-yet="git tag -l -n1 | gsort -V"
 
 # build a python wheel, you know because its long to type
 alias bw="python setup.py bdist_wheel"
+
+# http://osxdaily.com/2015/11/16/howto-flush-dns-cache-os-x-elcap/
+alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed'
+
+# https://www.commandlinefu.com/commands/view/12218/convert-yaml-to-json
+alias yaml2json="python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)'"
 
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
