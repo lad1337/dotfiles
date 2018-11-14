@@ -3,15 +3,17 @@
     tool = p4merge
     ff = false
 [mergetool "p4merge"]
-    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "\"$PWD/$BASE\"" "\"$PWD/$LOCAL\""  "\"$PWD/$REMOTE\"" "\"$PWD/$MERGED\"" 
-    keepTemporaries = false
-    trustExitCode = false
+    cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
     keepBackup = false
-    prompt = false
+	keepTemporaries = false
+	trustExitCode = false
+	prompt = false
 [diff]
-    tool = p4merge
-[difftool "p4merge"]
-    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "\"$REMOTE\"" "\"$LOCAL\""
+	tool = p4diff
+	renames = copies
+	mnemonicprefix = true
+[difftool "p4diff"]
+    cmd = p4diff "$LOCAL" "$REMOTE"
     prompt = false
 [core]
 	excludesfile = /Users/dlutter/.gitignore

@@ -2,6 +2,7 @@
 import os
 from urlparse import urljoin
 import subprocess
+import re
 
 import click
 import requests
@@ -45,17 +46,21 @@ def create(ctx, ticket_id, t):
 @click.pass_context
 def emails(ctx, ticket_id):
     ticket = get_ticket_data(ctx, ticket_id)
-    raw_emails = [word for word in ticket['fields']['description'].split() if '@' in word]
-    emails = []
-    if 'delete' in ticket['fields']['description']:
+    desc = ticket['fields']['description']
+    if 'delete' in desc:
         click.echo("DELETE this:", err=True)
-    if 'unlock' in ticket['fields']['description']:
+    if 'unlock' in desc:
         click.echo("UNLOCK this:", err=True)
-    for raw in raw_emails:
+
+    pattern = re.compile(r'\w+@\w+\.\w{2,3}')
+    emails = set()
+    for raw in pattern.findall(desc):
         if '|' in raw:
             raw = raw[1:raw.find('|')].strip('*')
-        emails.append(raw)
-        click.echo(raw)
+        emails.add(raw)
+
+    for m in emails:
+        click.echo(m)
 
 
 def get_ticket_data(ctx, ticket):

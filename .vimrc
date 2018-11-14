@@ -103,6 +103,8 @@ let g:pymode_options_max_line_length = 100
 let g:python_highlight_all = 1
 let g:pymode_breakpoint_bind = '<leader><leader>b'
 
-
 " yaml
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
+" git cimmit message
+autocmd FileType gitcommit set tw=80
