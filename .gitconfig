@@ -1,3 +1,11 @@
+[include]
+    path = ~/.gitconfig.local
+[user]
+	name = Dennis Lutter
+[core]
+	excludesfile = ~/.gitignore
+	editor = /usr/bin/vim
+    pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less -r
 [merge]
     keepBackup = false
     tool = p4merge
@@ -15,14 +23,6 @@
 [difftool "p4diff"]
     cmd = p4diff "$LOCAL" "$REMOTE"
     prompt = false
-[core]
-	excludesfile = /Users/dlutter/.gitignore
-	editor = /usr/bin/vim
-    pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less -r
-[user]
-	email = dl@figo.io
-	name = Dennis Lutter
-	signingkey = 61A98F0C3F2AAF28
 [commit]
 	gpgsign = true
 [pull]
