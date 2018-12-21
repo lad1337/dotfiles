@@ -7,12 +7,14 @@ DISABLE_UPDATE_PROMPT=true
 
 export DOT="$HOME/dotfiles"
 
-plugins=(git zsh-syntax-highlighting kubectl)
+plugins=(git zsh-syntax-highlighting kubectl vi-mode)
 
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:"
 # https://github.com/bhilburn/powerlevel9k
+POWERLEVEL9K_VI_INSERT_MODE_STRING="I"
+POWERLEVEL9K_VI_COMMAND_MODE_STRING="N"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtualenv)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtualenv vi_mode)
 
 # brew install zsh-completions
 # and load
