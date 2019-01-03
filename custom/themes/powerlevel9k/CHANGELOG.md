@@ -1,3 +1,86 @@
+## v0.6.6
+
+- The `rbenv` segment is no longer a default segment in the LPROMPT.
+- PR #959 - Fixing issue in v0.6.5 where we changed some color codes.
+- PR #934 - Add Tests
+- PR #884 - test-in-docker: fix with newer ZSH versions
+- PR #928 - [Docs] Add etc state description in dir docs
+- PR #937 - Use SUDO_COMMAND to check for sudo
+- PR #925 - [Bugfix] Resolve #918 Transparent background
+- PR #923 - Fix font issue debugging script
+- PR #921 - Add missing colors to fix color comparison
+- PR #951 - Add fallback icon for missing linux distro icons
+- PR #956 - Fix broken link in readme
+- Fixed #936 - fallback icons for Linux distros
+- Fixed #926 - `etc` state for `dir` segment in docs
+- Fixed #852 - `sudo` detection got crazy, there. sorry, everyone.
+- Fixed #927 - more default color issues.
+
+## v0.6.5
+
+- Multiple PRs: General fixes to README, improved documentation.
+- Multiple PRs: Improvements to icons / glyphs.
+- PR #777: now possible to always show the Ruby env segment.
+- PR #773: Fixed issue with home abbreviation in directory segment.
+- PR #789: Now properly working around some odd ZSH status return codes.
+- PR #716: Now possible to configure the colors of the VCS segment in rebase mode.
+- PR #722: Removed dependency on `bc` for `load` segment.
+- PR #686: Fixed issue where whitespaces in path occasionally broke `dir` segment.
+- PR #685: No longer accidentally invoking user `grep` aliases.
+- PR #680: Using env variable for `PYENV` properly, now.
+- PR #676, #611: Fixes for Kubernetes segment.
+- PR #667: Supporting multiple AWS profiles.
+- PR #660: Fixing directory parsing issue with PYTHONPATH.
+- PR #663: Fixed silly issues causing ZSH warnings.
+- PR #647: Fixing `public_ip` segment for macOS.
+- PR #643: Fixing `vpn_ip` segment naming.
+- PR #636: `context` segment now grabs user with command rather than env.
+- PR #618: Fix issue where `su -` didn't change context segment.
+- PR #608: Load average selection in `load` segment.
+
+### New Segment: `laravel_version`
+
+Displays the current laravel version.
+
+## v0.6.4
+
+- `load` segment now has configurable averages.
+- Update to `dir` segment to add `dir_writable` feature.
+- `status` segment can now display POSIX signal name of exit code.
+- Added `teardown` command to turn off P9k prompt.
+- Fixes for P9k in Cygwin and 32-bit systems.
+- Better colors in virtualization segments.
+- Added 'Gopher' icon to the `go_version` segment.
+- Improved detection in `nvm`
+- Added option to support command status reading from piped command sequences.
+- Fixed issue with visual artifacts with quick consecutive commands.
+- Updated 'ananconda' segment for more uniform styling.
+- `rvm` segment can now support usernames with dashes.
+- Fixed Python icon reference in some font configurations.
+- Vi mode indicator fixed.
+- Fixes for Docker segment.
+- Added new Docker-based testing system.
+- Significant enhancements to the `battery` segment. Check out the README to
+  read more!
+- New truncation strategy that truncates until the path becomes unique.
+
+### New Segments: `host` and `user`
+
+Provides two separate segments for `host` and `user` in case you don't wont both
+in one (per the `context` segment).
+
+### New Segment: `newline`
+
+Allows you to split segments across multiple lines.
+
+### New Segment: `kubecontext`
+
+Shows the current context of your `kubectl` configuration.
+
+### New Segment: `vpn`
+
+Shows current `vpn` interface.
+
 ## v0.6.3
 
 - Fixed susceptibility to [pw3nage exploit](https://github.com/njhartwell/pw3nage).
@@ -25,6 +108,11 @@ A new script `debug/font-issues.zsh` was added, so that problems with your font 
 ### `ram` changes
 
 The `ram` segment now shows the available ram instead of free.
+
+### Add new segments `host` and `user`
+
+The user and host segments allow you to have different icons and colors for both the user and host segments
+depending on their state.
 
 ## v0.6.0
 
