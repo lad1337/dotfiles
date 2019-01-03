@@ -11,10 +11,16 @@ plugins=(git zsh-syntax-highlighting kubectl vi-mode)
 
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:"
 # https://github.com/bhilburn/powerlevel9k
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_unique"
+POWERLEVEL9K_VCS_SHORTEN_LENGTH=16
+POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=11
+POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
+POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-remotebranch git-tagname)
 POWERLEVEL9K_VI_INSERT_MODE_STRING="I"
 POWERLEVEL9K_VI_COMMAND_MODE_STRING="N"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtualenv vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status root_indicator background_jobs virtualenv)
 
 # brew install zsh-completions
 # and load
@@ -27,7 +33,7 @@ alias zr="source ~/.zshrc"
 alias ze="vim ~/.zshrc"
 
 # python virtual env stuff
-export VIRTUAL_ENV_DISABLE_PROMPT=1
+export VIRTUAL_ENV_DISABLE_PROMPT=""
 export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
 VIRTUALENVWRAPPER_PATH="/usr/local/bin/virtualenvwrapper.sh"
 if [ -f "$VIRTUALENVWRAPPER_PATH" ]
