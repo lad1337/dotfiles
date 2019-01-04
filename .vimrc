@@ -77,6 +77,7 @@ Plug 'vim-scripts/openssl.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'elzr/vim-json'
+Plug 'christoomey/vim-system-copy'
 call plug#end()
 
 " fuzzy
