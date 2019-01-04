@@ -67,6 +67,12 @@ source "$DOT/git-flower.zsh"
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin"
 commands[kubectl]="something"
 
+
+# https://github.com/clvv/fasd#install
+if /usr/bin/which -as fasd; then
+    eval "$(fasd --init auto)"
+fi
+
 # http://cdn.smosh.com/sites/default/files/bloguploads/simpsons-fire.gif
 kiwf(){
 	find . -name $1 -delete -exec sh -c 'echo {} 🔥' \;
