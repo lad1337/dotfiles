@@ -9,6 +9,8 @@ set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set nofoldenable        "dont fold by default
+autocmd VimResized * wincmd =
+
 
 " This makes vim act like all other editors<leader> buffers can
 " exist in the background without being in a window.
@@ -107,5 +109,5 @@ let g:pymode_breakpoint_bind = '<leader><leader>b'
 " yaml
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
-" git cimmit message
+" git commit message
 autocmd FileType gitcommit set tw=80
