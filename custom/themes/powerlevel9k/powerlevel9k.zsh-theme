@@ -1871,8 +1871,19 @@ local NEWLINE='
 }
 
 zle-keymap-select () {
+    # change cursor shape in iTerm2
+    case $KEYMAP in
+        vicmd)      print -n -- "\e[2 q";;  # block cursor
+        viins|main) print -n -- "\e[5 q";;  # line cursor
+    esac
+
 	zle reset-prompt
 	zle -R
+}
+
+function zle-line-finish
+{
+    print -n -- "\e[5 q"  # line cursor
 }
 
 set_default POWERLEVEL9K_IGNORE_TERM_COLORS false
@@ -1942,7 +1953,11 @@ prompt_powerlevel9k_setup() {
   add-zsh-hook precmd powerlevel9k_prepare_prompts
   add-zsh-hook preexec powerlevel9k_preexec
 
+  zle -N zle-line-init
+  zle -N zle-line-finish
   zle -N zle-keymap-select
+  print -n -- "\e[5 q"  # line cursor
+
 }
 
 prompt_powerlevel9k_teardown() {
