@@ -10,6 +10,9 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set nofoldenable        "dont fold by default
 autocmd VimResized * wincmd =
+" https://unix.stackexchange.com/a/433321 auto cursor for vim
+autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
 
 
 " This makes vim act like all other editors<leader> buffers can
