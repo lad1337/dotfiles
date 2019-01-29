@@ -37,7 +37,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
+	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dotfiles</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -79,15 +79,21 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>936 995 445 257 -634 900 2560 1080 </string>
+	<string>558 230 445 123 0 0 1440 900 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>446 1613 400 129 -634 900 2560 1080 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>336 1416 620 392 -634 900 2560 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-569 1292 918 404 -634 900 2560 1080 </string>
+	<string>-387 1229 814 486 -634 900 2560 1080 </string>
+	<key>NSWindow Frame UKCrashReporter</key>
+	<string>493 94 592 584 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>372 1223 910 506 -634 900 2560 1080 </string>
+	<string>-634 1150 490 350 -634 900 2560 1080 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>281 276 850 518 0 0 1440 900 </string>
+	<string>-613 1079 490 350 -634 900 2560 1080 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>648 900 1276 1080 -634 900 2560 1080 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -330,6 +336,8 @@
 			<key>Description</key>
 			<string>Default</string>
 			<key>Disable Window Resizing</key>
+			<true/>
+			<key>Draw Powerline Glyphs</key>
 			<true/>
 			<key>Flashing Bell</key>
 			<false/>
@@ -664,7 +672,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>FiraCode-Regular 10</string>
+			<string>FuraCodeNerdFontComplete-Retina 10</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -731,6 +739,8 @@
 			<string>/Users/dlutter</string>
 		</dict>
 	</array>
+	<key>NoSyncHaveRequestedFullDiskAccess</key>
+	<true/>
 	<key>NoSyncHaveUsedCopyMode</key>
 	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
@@ -749,6 +759,7 @@
 		<array>
 			<string>session.jobName</string>
 			<string>session.id</string>
+			<string>session.autoNameFormat</string>
 			<string>session.profileName</string>
 			<string>session.name</string>
 			<string>session.terminalIconName</string>
@@ -759,6 +770,7 @@
 			<string>session.hostname</string>
 			<string>session.username</string>
 			<string>session.tmuxStatusRight</string>
+			<string>session.tab</string>
 			<string>session.tmuxRole</string>
 			<string>session.path</string>
 			<string>session.creationTimeString</string>
@@ -766,6 +778,7 @@
 			<string>session.tmuxWindowTitle</string>
 			<string>session.autoLogId</string>
 			<string>session.tty</string>
+			<string>session.badge</string>
 			<string>session.autoName</string>
 			<string>session.terminalWindowName</string>
 			<string>iterm2</string>
@@ -779,48 +792,50 @@
 		</array>
 		<key>16</key>
 		<array>
-			<string>titleOverride</string>
-			<string>currentTab.currentSession.session.columns</string>
-			<string>currentTab</string>
-			<string>currentTab.currentSession.session.terminalWindowName</string>
-			<string>currentTab.currentSession</string>
-			<string>currentTab.currentSession.session.pid</string>
 			<string>currentTab.currentSession.session.mouseReportingMode</string>
 			<string>currentTab.currentSession.session.tty</string>
-			<string>currentTab.currentSession.session.autoName</string>
-			<string>currentTab.currentSession.session.presentationName</string>
 			<string>currentTab.currentSession.session.username</string>
 			<string>currentTab.currentSession.session.name</string>
-			<string>currentTab.currentSession.session.terminalIconName</string>
-			<string>currentTab.currentSession.session.rows</string>
-			<string>currentTab.currentSession.session.jobName</string>
-			<string>iterm2</string>
 			<string>currentTab.currentSession.session.hostname</string>
 			<string>currentTab.currentSession.session.termid</string>
+			<string>currentTab</string>
+			<string>currentTab.currentSession.session.pid</string>
 			<string>currentTab.currentSession.session.path</string>
+			<string>currentTab.currentSession</string>
+			<string>titleOverride</string>
+			<string>currentTab.currentSession.session.terminalWindowName</string>
+			<string>currentTab.currentSession.session.autoName</string>
 			<string>currentTab.currentSession.session.jobPid</string>
+			<string>currentTab.currentSession.session.autoNameFormat</string>
+			<string>iterm2</string>
+			<string>currentTab.currentSession.session.presentationName</string>
+			<string>currentTab.currentSession.session.columns</string>
+			<string>currentTab.currentSession.session.terminalIconName</string>
+			<string>currentTab.currentSession.session.jobName</string>
+			<string>currentTab.currentSession.session.rows</string>
 		</array>
 		<key>2</key>
 		<array>
-			<string>currentSession</string>
-			<string>titleOverride</string>
-			<string>currentSession.session.terminalIconName</string>
+			<string>currentSession.session.jobName</string>
 			<string>currentSession.session.termid</string>
 			<string>currentSession.session.pid</string>
-			<string>currentSession.session.autoName</string>
+			<string>currentSession.session.hostname</string>
 			<string>currentSession.session.name</string>
 			<string>currentSession.session.mouseReportingMode</string>
-			<string>currentSession.session.path</string>
-			<string>currentSession.session.hostname</string>
-			<string>currentSession.session.rows</string>
-			<string>currentSession.session.tty</string>
-			<string>currentSession.session.jobName</string>
-			<string>iterm2</string>
-			<string>tmuxWindow</string>
 			<string>currentSession.session.presentationName</string>
 			<string>currentSession.session.username</string>
 			<string>currentSession.session.jobPid</string>
+			<string>currentSession.session.terminalIconName</string>
+			<string>currentSession.session.rows</string>
+			<string>titleOverride</string>
+			<string>currentSession.session.tty</string>
 			<string>currentSession.session.terminalWindowName</string>
+			<string>currentSession.session.path</string>
+			<string>currentSession.session.autoNameFormat</string>
+			<string>iterm2</string>
+			<string>currentSession.session.autoName</string>
+			<string>tmuxWindow</string>
+			<string>currentSession</string>
 			<string>currentSession.session.columns</string>
 		</array>
 		<key>4</key>
@@ -876,7 +891,9 @@
 	<key>PrefsCustomFolder</key>
 	<string>/Users/dlutter/dotfiles</string>
 	<key>PromptOnQuit</key>
-	<false/>
+	<true/>
+	<key>ProportionalScrollWheelReporting</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -886,8 +903,10 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-09-27T10:45:56Z</date>
+	<date>2019-01-02T10:40:23Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>SensitiveScrollWheel</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<true/>
@@ -902,6 +921,8 @@
 	</array>
 	<key>UseBorder</key>
 	<false/>
+	<key>UseModernScrollWheelAccumulator</key>
+	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>findIgnoreCase_iTerm</key>
@@ -911,7 +932,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.20180927-nightly</string>
+	<string>3.3.20190102-nightly</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
