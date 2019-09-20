@@ -37,3 +37,8 @@
 	required = true
 [fetch]
 	prune = true
+[alias]
+  # reset
+  unstage = reset HEAD              # remove files from index (tracking)
+  uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
+  delete-remote-tag = push --delete origin

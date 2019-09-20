@@ -18,10 +18,8 @@ POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=11
 POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-remotebranch git-tagname)
 # <space> forces the seprator to appear
-POWERLEVEL9K_VI_INSERT_MODE_STRING=" "
-POWERLEVEL9K_VI_COMMAND_MODE_STRING="\uf0ec"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status root_indicator background_jobs virtualenv)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtualenv kubecontext)
 
 # brew install zsh-completions
 # and load
@@ -64,9 +62,8 @@ source "$DOT/git-flower.zsh"
 # git-flower, config:
 # url is without the key/id
 # export HOTFIX_ISSUE_URL="https://github.com/lad1337/dotfiles/issues/"
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin:$HOME/go/bin"
 commands[kubectl]="something"
-
 
 # https://github.com/clvv/fasd#install
 if /usr/bin/which -as fasd; then
@@ -76,11 +73,6 @@ fi
 # http://cdn.smosh.com/sites/default/files/bloguploads/simpsons-fire.gif
 kiwf(){
 	find . -name $1 -delete -exec sh -c 'echo {} 🔥' \;
-}
-
-get_pod_by_name_index(){
-	local INDEX=${2:-0}
-	echo $(kubectl get pods -l component=$1 -o jsonpath="{.items[$INDEX].metadata.name}")
 }
 
 tunnel-anything(){
@@ -98,9 +90,6 @@ tunnel-anything(){
     ssh -S "/tmp/tunnel-anything-$port" -O exit "$host"
 }
 
-t(){
-    tree -L "$1"
-}
 
 ssl-fingerprint(){
     openssl s_client -servername "$1" -connect "$1:443" | openssl x509 -fingerprint -noout
@@ -113,9 +102,20 @@ realpath(){
 
 
 1password(){
-    eval $(op signin my)
+    if ! op list items --account=my > /dev/null; then
+        eval $(op signin my)
+    fi
 }
 
+calver(){
+    local d=$(date +%y.%-m)
+    local minor="${1:+.$1}"
+    local rc="${2:+-rc$2}"
+    echo "$d$minor$rc"
+}
+
+# LOAD all other functions
+source $DOT/functions/*.sh
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
 compdef _ssh_hosts tunnel-anything
@@ -134,10 +134,7 @@ alias ping="${grc} ping"
 alias dig="${grc} dig"
 alias ifconfig="${grc} ifconfig"
 alias traceroute="${grc} traceroute"
-alias t2="t 2"
-alias t3="t 3"
-alias t4="t 4"
-alias t5="t 5"
+alias t="tree"
 # http://superuser.com/questions/180299/how-can-i-trigger-the-screensaver-on-my-mac
 alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 # clean tox
@@ -163,5 +160,6 @@ alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flus
 # https://www.commandlinefu.com/commands/view/12218/convert-yaml-to-json
 alias yaml2json="python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)'"
 # vim
-alias vim='vim -O'
+alias vim='nvim -O'
 alias e='vim'
+alias watch='watch '

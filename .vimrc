@@ -11,8 +11,10 @@ set gcr=a:blinkon0              "Disable cursor blink
 set nofoldenable        "dont fold by default
 autocmd VimResized * wincmd =
 " https://unix.stackexchange.com/a/433321 auto cursor for vim
-autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
+"autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+"autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
+" https://stackoverflow.com/a/6489348
+:autocmd InsertEnter,InsertLeave * set cul!
 
 
 " This makes vim act like all other editors<leader> buffers can
