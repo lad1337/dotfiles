@@ -1,0 +1,16 @@
+{
+  "python.jediEnabled": false,
+  "python.linting.pylintEnabled": false,
+  "python.linting.pylamaEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "coc.preferences.triggerSignatureHelp": true,
+  "python.autoComplete.showAdvancedMembers": false,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  }
+}

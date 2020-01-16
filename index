@@ -26,6 +26,8 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtua
 # might need: rm -f ~/.zcompdump; compinit
 # info with: brew info zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
+# https://docs.brew.sh/Analytics
+export HOMEBREW_NO_ANALYTICS=1
 
 # zsh-manage
 alias zr="source ~/.zshrc"
