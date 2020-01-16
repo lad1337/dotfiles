@@ -4,7 +4,7 @@
 	name = Dennis Lutter
 [core]
 	excludesfile = ~/.gitignore
-	editor = /usr/bin/vim
+	editor = `brew --prefix nvim`/bin/nvim
     pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less -r
 [merge]
     keepBackup = false
@@ -23,8 +23,6 @@
 [difftool "p4diff"]
     cmd = p4diff "$LOCAL" "$REMOTE"
     prompt = false
-[commit]
-	gpgsign = true
 [pull]
 	rebase = true
 [push]
