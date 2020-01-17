@@ -151,8 +151,6 @@ alias docker-clean-containers='printf "\n>>> Deleting stopped containers\n\n" &&
 alias docker-clean-images='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
 # clean all docker things
 alias docker-clean-all='docker-clean-containers || true && docker-clean-images || true && docker-clean-volumes'
-# just like cat 
-alias dog='pygmentize -f terminal16m -O "style=fruity"'
 # git semantic version
 alias are-we-there-yet="git tag -l -n1 | gsort -V"
 # build a python wheel, you know because its long to type

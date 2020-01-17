@@ -14,7 +14,6 @@ set nofoldenable        "dont fold by default
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 set noswapfile
-set signcolumn=yes
 
 syntax on
 
@@ -29,22 +28,36 @@ Plug 'christoomey/vim-system-copy'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-python/python-syntax'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'joshdick/onedark.vim'
+Plug 'nanotech/jellybeans.vim'
 call plug#end()
+
+" colorscheme other visual stuff
 let g:onedark_terminal_italics = 1
-colorscheme onedark
+let g:jellybeans_use_term_italics = 1
+colorscheme jellybeans
+set termguicolors
+let g:jellybeans_overrides = {
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+\}
+if has('termguicolors') && &termguicolors
+    let g:jellybeans_overrides['background']['guibg'] = 'none'
+endif
+set signcolumn=yes
 
 
 autocmd VimResized * wincmd =
-" https://unix.stackexchange.com/a/433321 auto cursor for vim
-"autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-"autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
+" mode switch stuff
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
+autocmd VimLeave * set guicursor=a:ver25-blinkon1
 " https://stackoverflow.com/a/6489348 switch cursor for modes
-:autocmd InsertEnter,InsertLeave * set cul!
+autocmd InsertEnter,InsertLeave * set cul!
 
 "make Y consistent with C and D
 nnoremap Y y$
-
 
 " surround
 " <leader>" Surround a word with "quotes"
@@ -76,9 +89,7 @@ vmap <leader>{ c{<C-R>"}<ESC>
 
 vnoremap <leader>gy "*y
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
 set ts=4 sts=4 sw=4 expandtab
-syntax on
 autocmd FileType make setlocal noexpandtab
 
 set wildmode=list:longest
@@ -117,8 +128,8 @@ autocmd FileType gitcommit set tw=80
 " Better display for messages
 set cmdheight=2
 " next and previous "error"
-map <silent> dp <Plug>(coc-diagnostic-prev)
-nmap <silent> dn <Plug>(coc-diagnostic-next)
+nnoremap <silent> dp <Plug>(coc-diagnostic-prev)
+nnoremap <silent> dn <Plug>(coc-diagnostic-next)
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -168,9 +179,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
