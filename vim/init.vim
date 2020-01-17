@@ -34,10 +34,10 @@ Plug 'nanotech/jellybeans.vim'
 call plug#end()
 
 " colorscheme other visual stuff
-let g:onedark_terminal_italics = 1
 let g:jellybeans_use_term_italics = 1
 colorscheme jellybeans
 set termguicolors
+highlight SignColumn guibg=e8e8d3
 let g:jellybeans_overrides = {
 \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 \}
