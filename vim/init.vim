@@ -31,11 +31,23 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'joshdick/onedark.vim'
 Plug 'nanotech/jellybeans.vim'
+Plug 'dikiaap/minimalist'
+Plug 'flazz/vim-colorschemes'
+Plug 'bkbncn/vim-colorschemes-picker'
 call plug#end()
 
 " colorscheme other visual stuff
 let g:jellybeans_use_term_italics = 1
 colorscheme jellybeans
+" obsidian
+" sonofobsidian
+" made_of_code
+" cobalt2
+" blazer
+" maroloccio
+" pencil
+" eva01-LCL
+" elise
 set termguicolors
 highlight SignColumn guibg=e8e8d3
 let g:jellybeans_overrides = {
