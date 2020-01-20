@@ -8,6 +8,7 @@ set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set nofoldenable        "dont fold by default
+filetype plugin indent on
 
 " This makes vim act like all other editors<leader> buffers can
 " exist in the background without being in a window.
@@ -34,6 +35,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'dikiaap/minimalist'
 Plug 'flazz/vim-colorschemes'
 Plug 'bkbncn/vim-colorschemes-picker'
+Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
 
 " colorscheme other visual stuff
