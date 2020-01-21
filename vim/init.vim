@@ -53,8 +53,14 @@ colorscheme jellybeans
 " turtles
 " ir_black
 " Atelier_DuneDark
+" chance-of-storm
 set termguicolors
+" left markers column is always visible
 highlight SignColumn guibg=e8e8d3
+" over the line!
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%101v.\+/
+
 let g:jellybeans_overrides = {
 \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
 \}
