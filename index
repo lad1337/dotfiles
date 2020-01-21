@@ -163,3 +163,10 @@ alias yaml2json="python -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdi
 alias vim='nvim -O'
 alias e='vim'
 alias watch='watch '
+
+# enable pyenv
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+

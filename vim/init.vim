@@ -50,6 +50,9 @@ colorscheme jellybeans
 " pencil
 " eva01-LCL
 " elise
+" turtles
+" ir_black
+" Atelier_DuneDark
 set termguicolors
 highlight SignColumn guibg=e8e8d3
 let g:jellybeans_overrides = {
@@ -67,8 +70,6 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 autocmd VimLeave * set guicursor=a:ver25-blinkon1
-" https://stackoverflow.com/a/6489348 switch cursor for modes
-autocmd InsertEnter,InsertLeave * set cul!
 
 "make Y consistent with C and D
 nnoremap Y y$
