@@ -34,47 +34,17 @@ Plug 'junegunn/vim-easy-align'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
 
-"""""""""""""" colorscheme other visual stuff
-colorscheme underwater-mod
-" obsidian
-" sonofobsidian
-" made_of_code
-" cobalt2
-" blazer
-" maroloccio
-" pencil
-" eva01-LCL
-" elise
-" turtles
-" ir_black
-" Atelier_DuneDark
-" chance-of-storm
-" flatcolor
-" Tomorrow-Night-Bright
-" forneus
-" underwater
-" minimalist
-" sorcerer
-" base16-atelierforest
-" basic-dark
-" underwater-mod
-" HATE key
-set termguicolors
-" left markers column is always visible
-highlight SignColumn guibg=e8e8d3
-" over the line!
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%101v.\+/
+" colorscheme other visual stuff
+source ~/.config/nvim/style.vim
 " always show signcolumn (the left column with the markers)
-set signcolumn=yes
 " auto resize splits
-autocmd VimResized * wincmd =
-" cursor mode switch (neovim specific)
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-  \,sm:block-blinkwait175-blinkoff150-blinkon175
-autocmd VimLeave * set guicursor=a:ver25-blinkon1
+" ---- movement ----
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
+" ---- editing -----
 """"""""" plugins
 """""""""""""""""" easy-align
 " https://github.com/junegunn/vim-easy-align#quick-start-guide

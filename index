@@ -35,7 +35,6 @@ alias ze="vim ~/.zshrc"
 
 # python virtual env stuff
 export VIRTUAL_ENV_DISABLE_PROMPT=""
-
 # we speak english
 #export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
