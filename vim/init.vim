@@ -36,8 +36,7 @@ call plug#end()
 
 " colorscheme other visual stuff
 source ~/.config/nvim/style.vim
-" always show signcolumn (the left column with the markers)
-" auto resize splits
+source ~/.config/nvim/fzf.vim
 " ---- movement ----
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

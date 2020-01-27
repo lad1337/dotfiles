@@ -17,8 +17,6 @@ colorscheme underwater-mod
 " underwater-mod
 " Tomorrow-Night-Bright
 " HATE
-nnoremap <leader>H :Hate<cr>
-nnoremap <leader>N :CSnext<cr>
 set termguicolors
 " left markers column is always visible
 set signcolumn=yes
