@@ -35,13 +35,6 @@ alias ze="vim ~/.zshrc"
 
 # python virtual env stuff
 export VIRTUAL_ENV_DISABLE_PROMPT=""
-export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
-VIRTUALENVWRAPPER_PATH="/usr/local/bin/virtualenvwrapper.sh"
-if [ -f "$VIRTUALENVWRAPPER_PATH" ]
-then
-  source "$VIRTUALENVWRAPPER_PATH"
-fi
-export VIRTUAL_ENV=''
 
 # we speak english
 #export LC_ALL=en_GB.UTF-8
@@ -64,7 +57,7 @@ source "$DOT/git-flower.zsh"
 # git-flower, config:
 # url is without the key/id
 # export HOTFIX_ISSUE_URL="https://github.com/lad1337/dotfiles/issues/"
-export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/go/bin:$PATH"
 commands[kubectl]="something"
 
 # https://github.com/clvv/fasd#install
@@ -122,6 +115,14 @@ source $DOT/functions/*.sh
 source $ZSH/oh-my-zsh.sh
 compdef _ssh_hosts tunnel-anything
 
+# overwrite vcs state colors as theme does not have a nice yellow
+# https://github.com/Powerlevel9k/powerlevel9k/blob/3057e8fc07374e9c580790a023cb85998ca91fc8/powerlevel9k.zsh-theme#L1536
+typeset -gAH vcs_states
+  vcs_states=(
+    'clean'         'green'
+    'modified'      'cyan'
+    'untracked'     'green'
+  )
 # load fuzzy finder
 # currently installed by vim plugin manager
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -165,8 +166,10 @@ alias e='vim'
 alias watch='watch '
 
 # enable pyenv
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
 

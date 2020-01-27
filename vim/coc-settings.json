@@ -7,6 +7,7 @@
   "coc.preferences.triggerSignatureHelp": true,
   "python.autoComplete.showAdvancedMembers": false,
   "coc.preferences.noselect": false,
+  "python.workspaceSymbols.exclusionPatterns": [],
   "languageserver": {
     "golang": {
       "command": "gopls",

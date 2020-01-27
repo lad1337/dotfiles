@@ -1,6 +1,4 @@
-
-" ================ General Config ====================
-
+""""""""""""""" General Config
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
@@ -15,11 +13,11 @@ filetype plugin indent on
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 set noswapfile
-
 syntax on
-
 let mapleader=","
+nnoremap <leader>R :source $HOME/.config/nvim/init.vim<cr>
 
+""""""""""""" activate plugins
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -30,17 +28,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-python/python-syntax'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'joshdick/onedark.vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'dikiaap/minimalist'
-Plug 'flazz/vim-colorschemes'
-Plug 'bkbncn/vim-colorschemes-picker'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'lad1337/underwater-mod'
+Plug 'junegunn/vim-easy-align'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
 
-" colorscheme other visual stuff
-let g:jellybeans_use_term_italics = 1
-colorscheme jellybeans
+"""""""""""""" colorscheme other visual stuff
+colorscheme underwater-mod
 " obsidian
 " sonofobsidian
 " made_of_code
@@ -54,54 +49,59 @@ colorscheme jellybeans
 " ir_black
 " Atelier_DuneDark
 " chance-of-storm
+" flatcolor
+" Tomorrow-Night-Bright
+" forneus
+" underwater
+" minimalist
+" sorcerer
+" base16-atelierforest
+" basic-dark
+" underwater-mod
+" HATE key
 set termguicolors
 " left markers column is always visible
 highlight SignColumn guibg=e8e8d3
 " over the line!
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%101v.\+/
-
-let g:jellybeans_overrides = {
-\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-\}
-if has('termguicolors') && &termguicolors
-    let g:jellybeans_overrides['background']['guibg'] = 'none'
-endif
+" always show signcolumn (the left column with the markers)
 set signcolumn=yes
-
-
+" auto resize splits
 autocmd VimResized * wincmd =
-" mode switch stuff
+" cursor mode switch (neovim specific)
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 autocmd VimLeave * set guicursor=a:ver25-blinkon1
 
-"make Y consistent with C and D
-nnoremap Y y$
-
-" surround
+""""""""" plugins
+"""""""""""""""""" easy-align
+" https://github.com/junegunn/vim-easy-align#quick-start-guide
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+"""""""""""""""""" hexokinase
+let g:Hexokinase_highlighters = ['background']
+"""""""""""""""""" surround
 " <leader>" Surround a word with "quotes"
 map <leader>" ysiw"
 vmap <leader>" c"<C-R>""<ESC>
-
 " <leader>' Surround a word with 'single quotes'
 map <leader>' ysiw'
 vmap <leader>' c'<C-R>"'<ESC>
-
 " <leader>) or <leader>( Surround a word with (parens)
 " The difference is in whether a space is put in
 map <leader>( ysiw(
 map <leader>) ysiw)
 vmap <leader>( c( <C-R>" )<ESC>
 vmap <leader>) c(<C-R>")<ESC>
-
 " <leader>[ Surround a word with [brackets]
 map <leader>] ysiw]
 map <leader>[ ysiw[
 map <leader>[ c[ <C-R>" ]<ESC>
 vmap <leader>] c[<C-R>"]<ESC>
-
 " <leader>{ Surround a word with {braces}
 map <leader>} ysiw}
 map <leader>{ ysiw{
@@ -116,7 +116,8 @@ autocmd FileType make setlocal noexpandtab
 set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set completeopt=menuone
-
+"make Y consistent with C and D
+nnoremap Y y$
 
 " fuzzy
 let g:fzf_layout = { 'down': '~20%' }
