@@ -85,25 +85,8 @@ autocmd FileType make setlocal noexpandtab
 set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set completeopt=menuone
-"make Y consistent with C and D
+" make Y consistent with C and D
 nnoremap Y y$
-
-" fuzzy
-let g:fzf_layout = { 'down': '~20%' }
-let g:fzf_buffers_jump = 1
-
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>b :Buffers<cr>
-nnoremap <silent> <leader>gf :GitFiles?<cr>
-nnoremap <silent> <leader>ag :Ag<cr>
-nnoremap <silent> <leader>h: :History:<cr>
-
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
-
 
 " python
 vmap <C-i> !eingefuhrt<CR>

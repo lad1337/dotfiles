@@ -113,6 +113,8 @@ source $DOT/functions/*.sh
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
 compdef _ssh_hosts tunnel-anything
+# custom kybingins and there functions
+source "$DOT/keybindins.zsh"
 
 # overwrite vcs state colors as theme does not have a nice yellow
 # https://github.com/Powerlevel9k/powerlevel9k/blob/3057e8fc07374e9c580790a023cb85998ca91fc8/powerlevel9k.zsh-theme#L1536
@@ -126,6 +128,7 @@ typeset -gAH vcs_states
 # currently installed by vim plugin manager
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --reverse --inline-info'
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 export LOLMODE=false
 
