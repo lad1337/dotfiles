@@ -1,8 +1,2 @@
-_fuzzy_edit(){
-    zle kill-whole-line
-    local files="$(__fsel)"
-    zle -U "e $files"
-    zle .accept-line
-}
-zle -N _fuzzy_edit
-bindkey ^e _fuzzy_edit
+# https://jdhao.github.io/2019/06/13/zsh_bind_keys/#bind-key-to-run-a-custom-command
+bindkey -s '^e' 'e $(fzf --type f)\n'
