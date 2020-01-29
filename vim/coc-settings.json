@@ -8,7 +8,7 @@
   "python.linting.flake8Args": ["--max-line-length", "99"],
   "python.linting.enabled": true,
   "python.formatting.provider": "black",
-  "python.formatting.blackPath": "/usr/local/bin/black",
+  "python.formatting.blackPath": "~/.local/bin/black",
   "python.formatting.blackArgs": ["-l", "100"],
   "python.autoComplete.showAdvancedMembers": false,
   "python.workspaceSymbols.exclusionPatterns": [],

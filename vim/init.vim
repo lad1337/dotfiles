@@ -43,7 +43,22 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" ---- editing -----
+""""""""" editing
+map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
+map <F3> :source ~/.vim_session <cr>     " And load session with F3
+""""""""" auto highlight
+" https://stackoverflow.com/a/25233145
+set updatetime=10
+
+function! HighlightWordUnderCursor()
+    if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]' 
+        exec 'match' 'HoverSearch' '/\V\<'.expand('<cword>').'\>/' 
+    else 
+        match none 
+    endif
+endfunction
+
+autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
 """"""""" plugins
 """""""""""""""""" easy-align
 " https://github.com/junegunn/vim-easy-align#quick-start-guide
@@ -52,7 +67,7 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 """""""""""""""""" hexokinase
-let g:Hexokinase_highlighters = ['background']
+let g:Hexokinase_highlighters = ['backgroundfull']
 """""""""""""""""" surround
 " <leader>" Surround a word with "quotes"
 map <leader>" ysiw"
