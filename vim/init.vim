@@ -32,6 +32,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'lad1337/underwater-mod'
 Plug 'junegunn/vim-easy-align'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " colorscheme other visual stuff
@@ -42,6 +43,16 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+""""""""" debugging
+""""""""""""""""" get highlight group under cursor
+" https://stackoverflow.com/a/9464929
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
 """"""""" editing
 map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2

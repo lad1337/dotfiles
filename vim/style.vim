@@ -16,7 +16,6 @@ colorscheme underwater-mod
 " lanox
 " underwater-mod
 " Tomorrow-Night-Bright
-" HATE
 set termguicolors
 " left markers column is always visible
 set signcolumn=yes
