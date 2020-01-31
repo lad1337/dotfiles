@@ -38,11 +38,14 @@ call plug#end()
 " colorscheme other visual stuff
 source ~/.config/nvim/style.vim
 source ~/.config/nvim/fzf.vim
-" ---- movement ----
+""""""""" movment
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+""""""""""""""""" get highlight group under cursor
+nnoremap <C-W> <C-w>\|<C-w>_
+
 
 """"""""" debugging
 """"""""""""""""" get highlight group under cursor

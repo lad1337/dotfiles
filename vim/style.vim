@@ -4,7 +4,6 @@ colorscheme underwater-mod
 " sonofobsidian
 " made_of_code
 " cobalt2
-" blazer
 " maroloccio
 " pencil
 " eva01-LCL
@@ -13,7 +12,7 @@ colorscheme underwater-mod
 " ir_black
 " Atelier_DuneDark
 " chance-of-storm
-" lanox
+" lanox asdasda
 " underwater-mod
 " Tomorrow-Night-Bright
 set termguicolors
@@ -23,6 +22,11 @@ highlight SignColumn guibg=#0d1c2b
 " over the line!
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%101v.\+/
+" gitgutter symbol color remap
+" https://github.com/airblade/vim-gitgutter#signs-colours-and-symbols
+hi link GitGutterAdd String
+hi link GitGutterDelete Special
+hi link GitGutterChange Function
 
 " mode switch cursor
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
