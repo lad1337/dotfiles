@@ -7,7 +7,7 @@
   "python.linting.pylintEnabled": false,
   "python.linting.pylamaEnabled": false,
   "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": ["--max-line-length", "99"],
+  "python.linting.flake8Args": ["--max-line-length", "100"],
   "python.linting.enabled": true,
   "python.formatting.blackPath": "~/.local/bin/black",
   "python.formatting.blackArgs": ["-l", "100"],
