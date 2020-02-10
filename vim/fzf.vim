@@ -49,7 +49,6 @@ if has('nvim') && exists('&winblend') && &termguicolors
   autocmd  FileType fzf set noshowmode noruler nonu
 
   set winblend=10
-  hi link NormalFloat SignColumn
   if exists('g:fzf_colors.bg')
     call remove(g:fzf_colors, 'bg')
   endif

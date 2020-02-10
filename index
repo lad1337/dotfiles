@@ -33,8 +33,12 @@ export HOMEBREW_NO_ANALYTICS=1
 alias zr="source ~/.zshrc"
 alias ze="vim ~/.zshrc"
 
+# langauage stuff
 # python virtual env stuff
 export VIRTUAL_ENV_DISABLE_PROMPT=""
+# go
+export GOPATH="$HOME/.gopath"
+export GOBIN="$GOPATH/bin"
 # we speak english
 #export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
@@ -56,7 +60,7 @@ source "$DOT/git-flower.zsh"
 # git-flower, config:
 # url is without the key/id
 # export HOTFIX_ISSUE_URL="https://github.com/lad1337/dotfiles/issues/"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin:$HOME/.poetry/bin:$HOME/go/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin:$HOME/.poetry/bin:$GOBIN:$PATH"
 commands[kubectl]="something"
 
 # https://github.com/clvv/fasd#install

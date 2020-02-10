@@ -33,6 +33,10 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 autocmd VimLeave * set guicursor=a:ver25-blinkon1
+" lightline
+let g:lightline = {
+    \ 'colorscheme': 'underwatermod',
+    \ }
 
 " auto resize
 autocmd VimResized * wincmd =

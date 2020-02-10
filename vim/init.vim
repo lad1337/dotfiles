@@ -33,6 +33,8 @@ Plug 'lad1337/underwater-mod'
 Plug 'junegunn/vim-easy-align'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " colorscheme other visual stuff
@@ -74,6 +76,23 @@ endfunction
 
 autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
 """"""""" plugins
+"""""""""""""""""" vim-go
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 0
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_command = "golangci-lint run"
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_enabled = ['govet', 'golint', 'errcheck', 'structcheck']
+let g:go_metalinter_autosave_enabled = []
+let g:go_addtags_transform = "snakecase"
+
 """""""""""""""""" easy-align
 " https://github.com/junegunn/vim-easy-align#quick-start-guide
 " Start interactive EasyAlign in visual mode (e.g. vipga)
