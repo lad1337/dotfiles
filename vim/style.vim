@@ -12,6 +12,13 @@ hi link GitGutterAdd String
 hi link GitGutterDelete Special
 hi link GitGutterChange Function
 
+" acitve window with cursorline
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cursorline
+    autocmd WinLeave * set nocursorline
+augroup END
+
 " mode switch cursor
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
@@ -23,30 +30,19 @@ set noshowmode
 let g:lightline = {
     \ 'colorscheme': 'underwatermod',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
+    \   'left': [ [ 'paste' ],
     \             [ 'readonly', 'filename', 'modified' ] ],
-    \  'right': [ [ 'lineinfo' ], ['gitbranch'], ['fileencoding', 'filetype'] ]
+    \  'right': [ [ 'lineinfo' ], [ 'gitbranch' ], [ 'fileencoding', 'filetype' ] ]
     \ },
     \ 'inactive': {
     \   'left': [['filename']],
     \   'right': [['lineinfo']]
     \ },
-    \ 'mode_map': {
-    \ 'n' : 'N',
-    \ 'i' : 'I',
-    \ 'R' : 'R',
-    \ 'v' : 'V',
-    \ 'V' : 'VL',
-    \ "\<C-v>": 'VB',
-    \ 'c' : 'C',
-    \ 's' : 'S',
-    \ 'S' : 'SL',
-    \ "\<C-s>": 'SB',
-    \ 't': 'T',
-    \ },
     \ 'component_function': {
     \   'gitbranch': 'FugitiveHead'
     \ },
+    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
     \ }
 " auto resize
 autocmd VimResized * wincmd =

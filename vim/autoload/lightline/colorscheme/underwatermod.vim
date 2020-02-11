@@ -19,7 +19,7 @@ let s:cyan = [ ReturnHighlightTerm('Statement', 'guifg'), 0 ]
 let s:green = [ ReturnHighlightTerm('String', 'guifg'), 0 ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
-let s:p.normal.left = [ [ s:base02, s:blue ], [ s:base02, s:base01 ] ]
+let s:p.normal.left = [ [ s:base02, s:base01 ], [ s:base02, s:base01 ] ]
 let s:p.normal.right = [ [ s:base02, s:blue ], [ s:base02, s:base01 ] ]
 let s:p.inactive.right = [ [ s:base02, s:base00 ], [ s:base00, s:base02 ] ]
 let s:p.inactive.left =  [ [ s:base00, s:base02 ], [ s:base00, s:base02 ] ]
