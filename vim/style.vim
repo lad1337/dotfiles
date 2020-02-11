@@ -13,6 +13,7 @@ hi link GitGutterDelete Special
 hi link GitGutterChange Function
 
 " acitve window with cursorline
+set cursorline
 augroup BgHighlight
     autocmd!
     autocmd WinEnter * set cursorline
