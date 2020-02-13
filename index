@@ -72,6 +72,10 @@ fi
 kiwf(){
 	find . -name $1 -delete -exec sh -c 'echo {} 🔥' \;
 }
+# interactive job selection
+fgi(){
+    fg "%$(jobs | sort | fzf | cut -c2-2)"
+}
 
 tunnel-anything(){
     if [[ $# < 2 || $# > 3 ]]
