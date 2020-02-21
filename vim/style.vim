@@ -6,6 +6,7 @@ highlight SignColumn guibg=#0d1c2b
 " over the line!
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%101v.\+/
+"let g:overTheLineMatcher = matchadd("OverLength", "/.\%>101v/")
 " gitgutter symbol color remap
 " https://github.com/airblade/vim-gitgutter#signs-colours-and-symbols
 hi link GitGutterAdd String
@@ -36,7 +37,7 @@ let g:lightline = {
     \  'right': [ [ 'lineinfo' ], [ 'gitbranch' ], [ 'fileencoding', 'filetype' ] ]
     \ },
     \ 'inactive': {
-    \   'left': [['filename']],
+    \   'left': [['filename'], ['modified']],
     \   'right': [['lineinfo']]
     \ },
     \ 'component_function': {

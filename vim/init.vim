@@ -35,6 +35,8 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
+Plug 'towolf/vim-helm'
+Plug 'tpope/vim-eunuch'
 call plug#end()
 
 " colorscheme other visual stuff
@@ -68,9 +70,9 @@ set updatetime=10
 
 function! HighlightWordUnderCursor()
     if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]' 
-        exec 'match' 'HoverSearch' '/\V\<'.expand('<cword>').'\>/' 
+        exec '2match' 'HoverSearch' '/\V\<'.expand('<cword>').'\>/' 
     else 
-        match none 
+        2match none 
     endif
 endfunction
 
@@ -99,6 +101,12 @@ let g:go_addtags_transform = "snakecase"
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+"""""""""""""""""" gitgutter
+nmap ghn <Plug>(GitGutterNextHunk)
+nmap ghp <Plug>(GitGutterPrevHunk)
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghv <Plug>(GitGutterPreviewHunk)
 """""""""""""""""" hexokinase
 let g:Hexokinase_highlighters = ['backgroundfull']
 """""""""""""""""" surround
@@ -146,7 +154,7 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 " git commit message
 autocmd FileType gitcommit set tw=80
 
-" coc
+"""""""""""""""""" coc
 " Better display for messages
 set cmdheight=2
 " next and previous "error"
@@ -208,3 +216,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " use ctr+j|k for "dropdown-menu"
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
+
+command! -nargs=0 SortImports :call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.py :SortImports
+
+nmap <leader>si :SortImports<CR>

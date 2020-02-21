@@ -1,5 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  "coc.preferences.formatOnSaveFiletypes": ["python", "Markdown", "css", "json", "yaml"],
   "suggest.enablePreselect": true,
   "suggest.autoTrigger": "always",
   "suggest.triggerAfterInsertEnter": true,
@@ -12,8 +12,8 @@
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black",
   "python.formatting.blackArgs": ["-l", "100"],
+  "python.sortImports.path": "/Users/dlutter/.local/bin/isort",
   "python.autoComplete.showAdvancedMembers": false,
-  "python.workspaceSymbols.exclusionPatterns": [],
   "languageserver": {
     "golang": {
       "command": "gopls",
