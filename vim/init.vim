@@ -37,6 +37,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'towolf/vim-helm'
 Plug 'tpope/vim-eunuch'
+Plug 'liuchengxu/vista.vim'
+Plug 'iautom8things/gitlink-vim'
 call plug#end()
 
 " colorscheme other visual stuff
@@ -76,8 +78,45 @@ function! HighlightWordUnderCursor()
     endif
 endfunction
 
+""""""""" spell
+nnoremap sn ]s
+nnoremap sN [s
+nnoremap sf :call FzfSpell()<CR>
+nnoremap sF 1z=
+nnoremap <leader>sa zg
+
+function! FzfSpellSink(word)
+  exe 'normal! "_ciw'.a:word
+endfunction
+
+function! FzfSpell()
+  let suggestions = spellsuggest(expand("<cword>"), 10)
+  return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10 })
+endfunction
+
+""""""""" files
+augroup filetypes
+	au!
+	au FileType yaml autocmd BufWritePre <buffer> %s/\s\+$//e
+	au FileType own,gitcommit setlocal spell
+	au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+	au FileType proto setlocal ts=2 sts=2 sw=2 expandtab
+	au FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+augroup end
+
 autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
 """"""""" plugins
+"""""""""""""""""" gitlink
+nmap <leader>gl :echo gitlink#GitLink()<CR>
+vmap <leader>gl :echo gitlink#GitLink(1)<CR>
+"""""""""""""""""" vista
+let g:vista_default_executive = 'coc'
+let g:vista_fzf_preview = ['right:50%']
+nmap <buffer> <silent> <leader>V :call vista#finder#fzf#Run()<CR>
+"nmap <buffer> <silent> <leader>v :Vista!<CR>
+
+autocmd FileType vista,vista_kind nnoremap <buffer> <silent> / :call vista#finder#fzf#Run()<CR>
+
 """""""""""""""""" vim-go
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -218,6 +257,6 @@ inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 
 command! -nargs=0 SortImports :call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd BufWritePre *.py :SortImports
+"autocmd BufWritePre *.py :SortImports
 
 nmap <leader>si :SortImports<CR>

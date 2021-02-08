@@ -42,6 +42,11 @@ export GOBIN="$GOPATH/bin"
 # we speak english
 #export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
+# bat color theme
+# https://github.com/sharkdp/bat#highlighting-theme
+export BAT_THEME="OneHalfDark"
+# i use nvim
+export EDITOR=nvim
 
 # iterm2 tab color functions
 source "$DOT/iterm-tab-color"
@@ -118,6 +123,7 @@ calver(){
 
 # LOAD all other functions
 source $DOT/functions/*.sh
+source $DOT/functions/k8s.sh
 # LOAD THE ZSH
 source $ZSH/oh-my-zsh.sh
 compdef _ssh_hosts tunnel-anything

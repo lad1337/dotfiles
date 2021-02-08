@@ -5,7 +5,19 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = `brew --prefix nvim`/bin/nvim
-    pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less -r
+    pager = delta
+    ; pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less -r
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+  colorMoved = default
+[delta "decorations"]
+  commit-decoration-style = bold purple box ul
+  file-style = bold purple ul
+  file-decoration-style = none
+  hunk-header-decoration-style = purple box
 [merge]
     keepBackup = false
     tool = p4merge
