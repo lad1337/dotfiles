@@ -1,23 +1,22 @@
 [include]
     path = ~/.gitconfig.local
 [user]
-	name = Dennis Lutter
+    name = Dennis Lutter
 [core]
-	excludesfile = ~/.gitignore
-	editor = `brew --prefix nvim`/bin/nvim
+    excludesfile = ~/.gitignore
+    editor = `brew --prefix nvim`/bin/nvim
     pager = delta
-    ; pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less -r
 [interactive]
-  diffFilter = delta --color-only
+    diffFilter = delta --color-only
 [delta]
-  features = side-by-side line-numbers decorations
-  whitespace-error-style = 22 reverse
-  colorMoved = default
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+    colorMoved = default
 [delta "decorations"]
-  commit-decoration-style = bold purple box ul
-  file-style = bold purple ul
-  file-decoration-style = none
-  hunk-header-decoration-style = purple box
+    commit-decoration-style = bold purple box ul
+    file-style = bold purple ul
+    file-decoration-style = none
+    hunk-header-decoration-style = purple box
 [merge]
     keepBackup = false
     tool = p4merge
@@ -25,30 +24,31 @@
 [mergetool "p4merge"]
     cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
     keepBackup = false
-	keepTemporaries = false
-	trustExitCode = false
-	prompt = false
+    keepTemporaries = false
+    trustExitCode = false
+    prompt = false
 [diff]
-	tool = p4diff
-	renames = copies
-	mnemonicprefix = true
+    tool = p4diff
+    renames = copies
+    mnemonicprefix = true
 [difftool "p4diff"]
     cmd = p4diff "$LOCAL" "$REMOTE"
     prompt = false
 [pull]
-	rebase = true
+    rebase = true
 [push]
     default = current
     followTags = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [fetch]
-	prune = true
+    prune = true
 [alias]
   # reset
-  unstage = reset HEAD              # remove files from index (tracking)
-  uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
-  delete-remote-tag = push --delete origin
+    unstage = reset HEAD              # remove files from index (tracking)
+    uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
+    delete-remote-tag = push --delete origin
+    nehma = checkout
