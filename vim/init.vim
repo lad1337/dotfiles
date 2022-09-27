@@ -6,6 +6,8 @@ set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set nofoldenable        "dont fold by default
+set smartcase
+set spell
 filetype plugin indent on
 
 " This makes vim act like all other editors<leader> buffers can
@@ -25,7 +27,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'elzr/vim-json'
 Plug 'christoomey/vim-system-copy'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-python/python-syntax'
+"Plug 'vim-python/python-syntax'
+" below is a fork of vim-python that has basic match support
+Plug 'nyuszika7h/python-syntax', {'branch': 'main'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'Vimjas/vim-python-pep8-indent'
@@ -62,6 +66,13 @@ function! SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+" get highlight stack
+" this one is better then the above
+"https://stackoverflow.com/a/37040415
+function! SynGroup()                                                            
+    let l:s = synID(line('.'), col('.'), 1)                                       
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
 
 """"""""" editing
 map <F2> :mksession! ~/.vim_session <cr> " Quick write session with F2
@@ -260,3 +271,30 @@ command! -nargs=0 SortImports :call CocAction('runCommand', 'editor.action.organ
 "autocmd BufWritePre *.py :SortImports
 
 nmap <leader>si :SortImports<CR>
+
+"https://brookhong.github.io/2016/09/03/view-diff-file-side-by-side-in-vim.html
+function! Vimdiff()
+    let lines = getline(0, '$')
+    let la = []
+    let lb = []
+    for line in lines
+        if line[0] == '-'
+            call add(la, line[1:])
+        elseif line[0] == '+'
+            call add(lb, line[1:])
+        else
+            call add(la, line)
+            call add(lb, line)
+        endif
+    endfor
+    tabnew
+    set bt=nofile
+    vertical new
+    set bt=nofile
+    call append(0, la)
+    diffthis
+    exe "normal \<C-W>l"
+    call append(0, lb)
+    diffthis
+endfunction
+autocmd FileType diff       nnoremap <silent> <leader>vd :call Vimdiff()<CR>
