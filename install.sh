@@ -2,6 +2,7 @@ set -ex pipefail
 
 ln -sf "$HOME/dotfiles/.gitconfig" "$HOME/.gitconfig"
 echo "source $HOME/dotfiles/index" > "$HOME/.zshrc"
+rm -rf "$HOME/.config/nvim"
 ln -sf "$HOME/dotfiles/vim" "$HOME/.config/nvim"
 echo "Installing VIM plugins"
 vim +PlugInstall +qall

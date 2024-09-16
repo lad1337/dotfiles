@@ -36,7 +36,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'lad1337/underwater-mod'
 Plug 'junegunn/vim-easy-align'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter', {'branch': 'main'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'towolf/vim-helm'
