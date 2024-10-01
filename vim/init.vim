@@ -43,7 +43,9 @@ Plug 'towolf/vim-helm'
 Plug 'tpope/vim-eunuch'
 Plug 'liuchengxu/vista.vim'
 Plug 'iautom8things/gitlink-vim'
+Plug 'kcl-lang/kcl.nvim', {'branch': 'main'}
 call plug#end()
+
 
 " colorscheme other visual stuff
 source ~/.config/nvim/style.vim

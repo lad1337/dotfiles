@@ -1,25 +1,27 @@
 # vim: ft=sh
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_CUSTOM="$HOME/dotfiles/custom"
 DISABLE_UPDATE_PROMPT=true
 
 export DOT="$HOME/dotfiles"
 
-plugins=(git zsh-syntax-highlighting kubectl vi-mode)
+plugins=(git zsh-syntax-highlighting kubectl vi-mode direnv)
 
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:"
 # https://github.com/bhilburn/powerlevel9k
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+: '
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_unique"
 POWERLEVEL9K_VCS_SHORTEN_LENGTH=16
 POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=11
 POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-remotebranch git-tagname)
 # <space> forces the seprator to appear
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh nix_shell dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtualenv kubecontext)
+'
 
 # brew install zsh-completions
 # and load
