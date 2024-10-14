@@ -38,9 +38,8 @@ klfi () {
 	kli -f --tail=10
 }
 
-kcni () {
+foci () {
 	local ns=$(kubectl get namespace | fzf | awk '{print $1}')
-	local current=$(kubectl config current-context)
-	kubectl config set-context "${current}" --namespace="${ns}"
+	foc $ns
 }
 
