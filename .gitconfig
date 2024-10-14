@@ -1,7 +1,8 @@
 [include]
     path = ~/.gitconfig.local
 [user]
-    name = Dennis Lutter
+	name = lad1337
+	email = lad1337@gmail.com
 [core]
     excludesfile = ~/.gitignore
     editor = `brew --prefix nvim`/bin/nvim
