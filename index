@@ -77,6 +77,8 @@ source "$DOT/git-flower.zsh"
 # url is without the key/id
 # export HOTFIX_ISSUE_URL="https://github.com/lad1337/dotfiles/issues/"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$DOT/bin:$HOME/.local/bin:$HOME/.poetry/bin:$GOBIN:$PATH"
+export PATH=$PATH:/opt/homebrew/bin
+
 commands[kubectl]="something"
 
 # https://github.com/clvv/fasd#install

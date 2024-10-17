@@ -44,6 +44,9 @@ Plug 'tpope/vim-eunuch'
 Plug 'liuchengxu/vista.vim'
 Plug 'iautom8things/gitlink-vim'
 Plug 'kcl-lang/kcl.nvim', {'branch': 'main'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'xiyaowong/virtcolumn.nvim', {'branch': 'main'}
+Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
 
@@ -206,6 +209,16 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 " git commit message
 autocmd FileType gitcommit set tw=80
 
+" treesitter
+" https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#available-modules
+:lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 """""""""""""""""" coc
 " Better display for messages
 set cmdheight=2

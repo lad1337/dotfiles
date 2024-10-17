@@ -3,9 +3,10 @@ set termguicolors
 " left markers column is always visible
 set signcolumn=yes
 highlight SignColumn guibg=#0d1c2b
+set cc=100
 " over the line!
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%101v.\+/
+match OverLength /\%161v.\+/
 "let g:overTheLineMatcher = matchadd("OverLength", "/.\%>101v/")
 " gitgutter symbol color remap
 " https://github.com/airblade/vim-gitgutter#signs-colours-and-symbols
